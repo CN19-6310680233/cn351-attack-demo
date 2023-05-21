@@ -22,7 +22,7 @@
             </div>
             <div class="my-2">
                 <button class="btn btn-success" type="submit">Register</button>
-                <a href="/" class="mx-2">Login</a>
+                <a href="./" class="mx-2">Login</a>
             </div>
         </form>
     </div>

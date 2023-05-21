@@ -16,7 +16,7 @@
             </div>
             <div class="my-2">
                 <button class="btn btn-success" type="submit">Login</button>
-                <a href="/register.php" class="mx-2">Register</a>
+                <a href="./register.php" class="mx-2">Register</a>
             </div>
         </form>
     </div>
