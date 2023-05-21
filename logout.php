@@ -1,5 +1,6 @@
 <?php
 session_start();
 session_destroy();
-header("refresh: 1; url=/");
+include(__DIR__ . '/config.php');
+header("refresh: 1; url=$BASE_URL");
 ?>
