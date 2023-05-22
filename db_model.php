@@ -42,7 +42,7 @@ function insert_data($data){
 
 function delete_data($id){
     global $link;
-    $query = "DELETE FROM persons WHERE persons.id=$id;";
+    $query = "DELETE FROM persons WHERE id='$id';";
     $result = mysqli_query($link, $query);
     if ($result)
         return true;
@@ -52,7 +52,7 @@ function delete_data($id){
 
 function get_data($id){
     global $link;
-    $query = "SELECT * FROM persons where persons.id=$id;";
+    $query = "SELECT * FROM persons where id='$id';";
     $result = mysqli_query($link, $query);
     while ( $row = mysqli_fetch_assoc($result) ) {
         $person = $row;
@@ -63,6 +63,8 @@ function get_data($id){
 function update_data($data){
     global $link;
     extract($data);
+    // !! (XSS) Vulnerable code
+    // ** TODO: Escape input
     $query = "UPDATE persons SET name = '$name', surname = '$surname', email = '$email', phone = '$phone' WHERE id =$id;";
     $result = mysqli_query($link, $query);
     if ($result)
@@ -74,6 +76,8 @@ function update_data($data){
 function login($data){
     global $link;
     extract($data);
+    // !! (SQL Injection) Vulnerable code
+    // ** TODO: Escape input
     $query = "SELECT * FROM login WHERE username LIKE '$username' AND password LIKE '$password';";
     $result = mysqli_query($link, $query);
     $login = null;

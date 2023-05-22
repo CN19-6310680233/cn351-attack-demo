@@ -3,6 +3,8 @@ session_start();
 require_once(__DIR__ . '/db_model.php');
 include(__DIR__ . '/config.php');
 
+// !! (CSRF) Vulnerable code
+// ** TODO: Add CSRF Token
 if(isset($_POST)) {
     $login = login($_POST);
     if(!isset($login)) {
