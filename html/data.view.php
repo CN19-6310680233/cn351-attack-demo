@@ -3,6 +3,9 @@
     <div class="row">
         <div class="col-auto">
             <div class="d-grid gap-2">
+                <button type="button" class="btn btn-outline-dark">
+                    <?php echo $session['username']; ?>
+                </button>
                 <a class='btn btn-primary' href="insert.php">Add</a>
                 <a class='btn btn-danger' href="logout.php">Logout</a>
             </div>

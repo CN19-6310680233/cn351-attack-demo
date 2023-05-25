@@ -20,6 +20,7 @@ switch ($sort){
 }
 
 $persons = get_all_data($sort);
+$session = get_username($_SESSION['user_id']);
 
 include("html/template/top.php");
 if (isset($_SESSION['user_id'])) {

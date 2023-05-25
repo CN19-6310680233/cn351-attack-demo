@@ -94,3 +94,14 @@ function register($data) {
     $result = mysqli_query($link, $query);
     return $result;
 }
+
+function get_username($id){
+    global $link;
+    $query = "SELECT * FROM login WHERE id = $id";
+    $result = mysqli_query($link, $query);
+    $login = null;
+    while ( $row = mysqli_fetch_assoc($result) ) {
+        $login = $row;
+    }
+    return $login;
+}
