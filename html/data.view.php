@@ -28,7 +28,7 @@
                             <a class='text-decoration-none' href="index.php?sort=phone">Phone</a>
                         </th>
                         <th>
-                            <a class='text-decoration-none' href="">Del</a>
+                            <a class='text-decoration-none' href="">Delete</a>
                         </th>
                         <th>
                             <a class='text-decoration-none' href="">Update</a>
@@ -38,26 +38,49 @@
                 </thead>
                 <tbody class="table-group-divider">
                     <?php if (count($persons) > 0) : ?>
-                    <?php foreach ($persons as $person) : ?>
-                        <tr>
-                            <td><?= $person['id'] ?></td>
-                            <td><?= $person['name'] ?> <?= $person['surname'] ?></td>
-                            <td><?= $person['email'] ?></td>
-                            <td><?= $person['phone'] ?></td>
-                            <td>
-                                <a href='delete_process.php?id=<?= $person['id'] ?>' onclick="ConfirmDelete()">
-                                    <i class="bi bi-trash3"></i>
-                                </a>
-                            <td>
-                                <a href='update.php?id=<?= $person['id'] ?>'>
-                                    <i class="bi bi-pencil-square"></i>
-                                </a>
-                        </tr>
-                    <?php endforeach ?>
+                        <?php foreach ($persons as $person) : ?>
+                            <tr>
+                                <td><?= $person['id'] ?></td>
+                                <td><?= $person['name'] ?> <?= $person['surname'] ?></td>
+                                <td><?= $person['email'] ?></td>
+                                <td><?= $person['phone'] ?></td>
+                                <td>
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#P<?= $person['id'] ?>">
+                                        Delete
+                                    </button>
+                                    <div class="modal fade" id="P<?= $person['id'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="staticBackdropLabel">Delete <?= $person['name'] ?> <?= $person['surname'] ?>?</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body" align="left">
+                                                    <form action="delete_process.php?id=<?= $person['id'] ?>" method="post">
+                                                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                                                        <input type="password" class="form-control" name="password">
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary" href='update.php?id=<?= $person['id'] ?>'>
+                                    Update
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
                     <?php else : ?>
-                    <tr>
-                        <td colspan="6">No data</td>
-                    </tr>
+                        <tr>
+                            <td colspan="6">No data</td>
+                        </tr>
                     <?php endif ?>
                 </tbody>
             </table>
