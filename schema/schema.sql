@@ -8,8 +8,8 @@ CREATE TABLE `login` (
 
 CREATE TABLE `persons` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
-  `surname` varchar(100) NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `surname` varchar(200) NOT NULL,
   `email` varchar(64) NOT NULL,
   `phone` varchar(20) NOT NULL,
   UNIQUE KEY `id` (`id`),
