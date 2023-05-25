@@ -12,6 +12,7 @@ $id = isset($_GET['id']) ? $_GET['id']: false;
 if(isset($_POST) && isset($_POST['password'])) {
     $user = get_username($_SESSION['user_id']);
 
+    if(!isset($user)) return die("Invalid user");
     if($user['password'] !== md5($_POST['password'])) {
         return die("Invalid password");
     }
