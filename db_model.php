@@ -90,7 +90,8 @@ function login($data){
     extract($data);
     // !! (SQL Injection) Vulnerable code
     // ** TODO: Escape input
-    $query = "SELECT * FROM login WHERE username LIKE '$username' AND password LIKE '$password';";
+    $hashed = md5($password);
+    $query = "SELECT * FROM login WHERE username LIKE '$username' AND password LIKE '$hashed';";
     $result = mysqli_query($link, $query);
     $login = null;
     while ( $row = mysqli_fetch_assoc($result) ) {
@@ -114,7 +115,8 @@ function register($data) {
     extract($data);
 
     // !! (SQL Injection) Vulnerable code
-    $query = "INSERT INTO login (username, password) VALUES ('$username', '$password')";
+    $hashed = md5($password);
+    $query = "INSERT INTO login (username, password) VALUES ('$username', '$hashed')";
     $result = mysqli_query($link, $query);
     return $result;
 }
