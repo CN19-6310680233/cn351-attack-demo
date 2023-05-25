@@ -99,9 +99,21 @@ function login($data){
     return $login;
 }
 
+// ** Check if username is already exist
+function is_username_exist($username) {
+    global $link;
+    $query = "SELECT * FROM login WHERE username LIKE '$username';";
+    $result = mysqli_query($link, $query);
+    while ( $row = mysqli_fetch_assoc($result) ) $login = $row;
+    if(isset($login) && $login) return true;
+    return false;
+}
+
 function register($data) {
     global $link;
     extract($data);
+
+    // !! (SQL Injection) Vulnerable code
     $query = "INSERT INTO login (username, password) VALUES ('$username', '$password')";
     $result = mysqli_query($link, $query);
     return $result;
