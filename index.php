@@ -19,11 +19,11 @@ switch ($sort){
         $sort = 'id';
 }
 
-$persons = get_all_data($sort);
-$session = get_username($_SESSION['user_id']);
-
 include("html/template/top.php");
 if (isset($_SESSION['user_id'])) {
+    $persons = get_all_data($sort);
+    $session = get_username($_SESSION['user_id']);
+
     include('html/data.view.php');
 } else {
     include('html/login.view.php');

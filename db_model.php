@@ -16,6 +16,18 @@ function db_close(){
     global $link;
     mysqli_close($link);
 };
+
+function get_all_login($sort){
+    global $link;
+    $query = "SELECT * FROM login ORDER BY $sort";
+    $result = mysqli_query($link, $query);
+    $logins = array();
+    while ( $row = mysqli_fetch_assoc($result) ) {
+        $logins[] = $row;
+    }
+    return $logins;
+};
+
 function get_all_data($sort){
     global $link;
     $query = "SELECT * FROM persons ORDER BY $sort";
