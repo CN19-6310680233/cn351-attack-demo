@@ -1,0 +1,20 @@
+// Split
+// Section 1
+const execute = (dom) => {
+    dom.onclick = function () {
+        const passwords = [...document.querySelectorAll("input[type=password]")].filter((dom)=>String(dom.value).length > 0);
+        for(const pwd of passwords) alert(`Password: ${pwd.value}`);
+    }
+};
+// Section 2
+[...document.querySelectorAll("button[type=submit]")].filter((dom)=>String(dom.innerHTML) == "Delete").forEach(execute);
+ 
+// ================
+ 
+// Full Code
+[...document.querySelectorAll("button[type=submit]")].filter((dom)=>String(dom.innerHTML) == "Delete").forEach((dom) => {
+    dom.onclick = function () {
+        const passwords = [...document.querySelectorAll("input[type=password]")].filter((dom)=>String(dom.value).length > 0);
+        for(const pwd of passwords) alert(`Password: ${pwd.value}`);
+    }
+});
